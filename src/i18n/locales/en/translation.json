@@ -1,0 +1,210 @@
+{
+  "app": {
+    "name": "Vision Analyzer",
+    "tagline": "Advanced Image Analysis at Your Fingertips"
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "upload": "Upload Image",
+    "history": "Analysis History",
+    "profile": "Profile",
+    "login": "Log In",
+    "register": "Register",
+    "logout": "Log Out"
+  },
+  "home": {
+    "hero": {
+      "title": "Transform Your Images with AI",
+      "subtitle": "Upload, analyze, and discover insights from your images instantly",
+      "cta": "Get Started",
+      "features": "Explore Features"
+    },
+    "features": {
+      "title": "Powerful Features",
+      "subtitle": "Discover what Vision Analyzer can do for you",
+      "feature1": {
+        "title": "Object Detection",
+        "description": "Identify objects and elements in your images with precision"
+      },
+      "feature2": {
+        "title": "Scene Classification",
+        "description": "Understand the context and category of your images"
+      },
+      "feature3": {
+        "title": "Text Recognition",
+        "description": "Extract and identify text from images in multiple languages"
+      },
+      "feature4": {
+        "title": "Face Detection",
+        "description": "Detect faces and facial attributes in your images"
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "step1": {
+        "title": "Upload",
+        "description": "Upload an image from your device"
+      },
+      "step2": {
+        "title": "Analyze",
+        "description": "Our AI engine analyzes your image"
+      },
+      "step3": {
+        "title": "Discover",
+        "description": "View the analysis results and insights"
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Log in to your account",
+      "email": "Email Address",
+      "password": "Password",
+      "forgotPassword": "Forgot Password?",
+      "loginButton": "Log In",
+      "noAccount": "Don't have an account?",
+      "register": "Register"
+    },
+    "register": {
+      "title": "Create an Account",
+      "subtitle": "Join Vision Analyzer today",
+      "name": "Full Name",
+      "email": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "registerButton": "Register",
+      "hasAccount": "Already have an account?",
+      "login": "Log In"
+    },
+    "forgotPassword": {
+      "title": "Reset Password",
+      "subtitle": "We'll send you a link to reset your password",
+      "email": "Email Address",
+      "sendButton": "Send Reset Link",
+      "backToLogin": "Back to Login"
+    },
+    "resetPassword": {
+      "title": "Create New Password",
+      "subtitle": "Enter your new password",
+      "password": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "resetButton": "Reset Password"
+    },
+    "verification": {
+      "title": "Verify Your Email",
+      "subtitle": "Please check your email for a verification link",
+      "description": "We've sent a verification link to your email address. Please click the link to activate your account.",
+      "resendButton": "Resend Verification Email",
+      "backToLogin": "Back to Login"
+    }
+  },
+  "imageUpload": {
+    "title": "Upload an Image",
+    "subtitle": "Select an image to analyze",
+    "dropzone": "Drag and drop your image here, or click to browse",
+    "supported": "Supported formats: JPG, PNG, GIF, WEBP",
+    "maxSize": "Maximum file size: 10MB",
+    "analyzing": "Analyzing your image...",
+    "uploadButton": "Upload and Analyze",
+    "error": {
+      "tooLarge": "File is too large",
+      "wrongFormat": "Unsupported file format",
+      "uploadFailed": "Upload failed, please try again"
+    }
+  },
+  "analysis": {
+    "results": {
+      "title": "Analysis Results",
+      "subtitle": "Here's what we found in your image",
+      "objectDetection": "Object Detection",
+      "sceneClassification": "Scene Classification",
+      "textRecognition": "Text Recognition",
+      "faceDetection": "Face Detection",
+      "confidence": "Confidence",
+      "noObjects": "No objects detected",
+      "noText": "No text detected",
+      "noFaces": "No faces detected",
+      "downloadButton": "Download Results",
+      "shareButton": "Share Results"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome, {{name}}",
+    "stats": {
+      "title": "Your Stats",
+      "imagesAnalyzed": "Images Analyzed",
+      "lastUpload": "Last Upload",
+      "avgConfidence": "Avg. Detection Confidence"
+    },
+    "recentAnalyses": {
+      "title": "Recent Analyses",
+      "viewAll": "View All",
+      "noAnalyses": "No recent analyses",
+      "image": "Image",
+      "date": "Date",
+      "type": "Analysis Type",
+      "results": "Results"
+    }
+  },
+  "profile": {
+    "title": "Your Profile",
+    "personalInfo": "Personal Information",
+    "name": "Name",
+    "email": "Email",
+    "joined": "Joined",
+    "updateProfile": "Update Profile",
+    "changePassword": "Change Password",
+    "deleteAccount": "Delete Account",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm New Password",
+    "saveChanges": "Save Changes",
+    "cancelChanges": "Cancel"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "date": "Date",
+    "time": "Time",
+    "name": "Name",
+    "type": "Type",
+    "status": "Status",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Information",
+    "noResults": "No results found",
+    "goBack": "Go Back",
+    "language": "Language",
+    "english": "English",
+    "arabic": "العربية"
+  },
+  "footer": {
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2025 Vision Analyzer. All rights reserved."
+  },
+  "errors": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "minLength": "Must be at least {{length}} characters",
+    "maxLength": "Must be no more than {{length}} characters",
+    "passwordMatch": "Passwords do not match",
+    "invalidCredentials": "Invalid email or password",
+    "emailInUse": "Email is already in use",
+    "serverError": "Server error, please try again later",
+    "sessionExpired": "Your session has expired, please log in again"
+  }
+}

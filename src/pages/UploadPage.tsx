@@ -36,6 +36,8 @@ const UploadPage: React.FC = () => {
           `${MODEL_URL}metadata.json`
         );
         modelRef.current = model;
+        console.log("modelRef.current", modelRef.current);
+        console.log("model", model);
       } catch (err) {
         console.error("❌ Error loading model", err);
         setError("Model loading failed");

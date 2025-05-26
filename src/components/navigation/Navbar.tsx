@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { Menu, X, Globe, ChevronDown, User, LogOut } from 'lucide-react';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Menu, X, Globe, ChevronDown, User, LogOut } from "lucide-react";
 
-import { useAuth } from '../../contexts/AuthContext';
-import LanguageSwitcher from './LanguageSwitcher';
+import { useAuth } from "../../contexts/AuthContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { isAuthenticated, user, logout } = useAuth();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const isRtl = i18n.language === 'ar';
+  // const isRtl = i18n.language === 'ar';
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -24,7 +24,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/');
+    navigate("/");
     setIsProfileOpen(false);
   };
 
@@ -35,29 +35,40 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
               <Globe className="h-8 w-8 text-primary-600" />
-              <span className="ms-2 text-xl font-bold text-gray-900">{t('app.name')}</span>
+              <span className="ms-2 text-xl font-bold text-gray-900">
+                DFM Analyzer
+              </span>
             </Link>
           </div>
 
           {/* Desktop menu */}
           <div className="hidden md:flex md:items-center md:space-x-4 md:[dir=rtl]:space-x-reverse">
-            <Link to="/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors">
-              {t('nav.home')}
+            <Link
+              to="/"
+              className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
+            >
+              {t("nav.home")}
             </Link>
-            
+
             {isAuthenticated ? (
               <>
-                <Link to="/dashboard" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors">
-                  {t('nav.dashboard')}
+                <Link
+                  to="/dashboard"
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
+                >
+                  {t("nav.dashboard")}
                 </Link>
-                <Link to="/upload" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors">
-                  {t('nav.upload')}
+                <Link
+                  to="/upload"
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
+                >
+                  {t("nav.upload")}
                 </Link>
               </>
             ) : null}
-            
+
             <LanguageSwitcher />
-            
+
             {isAuthenticated ? (
               <div className="relative ml-3">
                 <button
@@ -65,9 +76,13 @@ const Navbar = () => {
                   className="flex items-center text-sm font-medium text-gray-700 hover:text-primary-600 focus:outline-none"
                 >
                   <span className="me-1">{user?.name}</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform ${isProfileOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${
+                      isProfileOpen ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
-                
+
                 {isProfileOpen && (
                   <div className="absolute right-0 [dir=rtl]:left-0 [dir=rtl]:right-auto mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-50">
                     <Link
@@ -76,25 +91,22 @@ const Navbar = () => {
                       onClick={() => setIsProfileOpen(false)}
                     >
                       <User className="w-4 h-4 me-2" />
-                      {t('nav.profile')}
+                      {t("nav.profile")}
                     </Link>
                     <button
                       onClick={handleLogout}
                       className="flex w-full items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     >
                       <LogOut className="w-4 h-4 me-2" />
-                      {t('nav.logout')}
+                      {t("nav.logout")}
                     </button>
                   </div>
                 )}
               </div>
             ) : (
               <div className="flex items-center space-x-2 [dir=rtl]:space-x-reverse">
-                <Link to="/login" className="btn btn-outline">
-                  {t('nav.login')}
-                </Link>
-                <Link to="/register" className="btn btn-primary">
-                  {t('nav.register')}
+                <Link to="/login" className="btn btn-primary">
+                  {t("nav.login")}
                 </Link>
               </div>
             )}
@@ -128,9 +140,9 @@ const Navbar = () => {
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50"
               onClick={() => setIsMenuOpen(false)}
             >
-              {t('nav.home')}
+              {t("nav.home")}
             </Link>
-            
+
             {isAuthenticated ? (
               <>
                 <Link
@@ -138,21 +150,21 @@ const Navbar = () => {
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t('nav.dashboard')}
+                  {t("nav.dashboard")}
                 </Link>
                 <Link
                   to="/upload"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t('nav.upload')}
+                  {t("nav.upload")}
                 </Link>
                 <Link
                   to="/profile"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t('nav.profile')}
+                  {t("nav.profile")}
                 </Link>
                 <button
                   onClick={() => {
@@ -161,7 +173,7 @@ const Navbar = () => {
                   }}
                   className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50"
                 >
-                  {t('nav.logout')}
+                  {t("nav.logout")}
                 </button>
               </>
             ) : (
@@ -171,14 +183,14 @@ const Navbar = () => {
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t('nav.login')}
+                  {t("nav.login")}
                 </Link>
                 <Link
                   to="/register"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t('nav.register')}
+                  {t("nav.register")}
                 </Link>
               </>
             )}

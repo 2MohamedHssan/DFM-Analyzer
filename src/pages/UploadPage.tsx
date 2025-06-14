@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect, ChangeEvent, DragEvent } from "react";
 import { useTranslation } from "react-i18next";
-// import { useNavigate } from "react-router-dom";
 import { Upload, Image as ImageIcon, FileX } from "lucide-react";
 import * as tmImage from "@teachablemachine/image";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
+import Guide from "../components/ui/Guide";
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const ALLOWED_FORMATS = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 const MODEL_URL = "/tm-model/";
 
@@ -16,7 +16,6 @@ type Prediction = {
 
 const UploadPage: React.FC = () => {
   const { t } = useTranslation();
-  // const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const modelRef = useRef<tmImage.CustomMobileNet | null>(null);
@@ -27,6 +26,10 @@ const UploadPage: React.FC = () => {
   const [error, setError] = useState<string>("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [prediction, setPrediction] = useState<Prediction | null>(null);
+  const [rejectionReason, setRejectionReason] = useState<string | null>(null);
+  const [suggestedMaterial, setSuggestedMaterial] = useState<string | null>(
+    null
+  );
 
   useEffect(() => {
     const loadModel = async () => {
@@ -36,8 +39,6 @@ const UploadPage: React.FC = () => {
           `${MODEL_URL}metadata.json`
         );
         modelRef.current = model;
-        console.log("modelRef.current", modelRef.current);
-        console.log("model", model);
       } catch (err) {
         console.error("❌ Error loading model", err);
         setError("Model loading failed");
@@ -51,6 +52,7 @@ const UploadPage: React.FC = () => {
       setError(t("imageUpload.error.tooLarge"));
       return false;
     }
+
     if (!ALLOWED_FORMATS.includes(file.type)) {
       setError(t("imageUpload.error.wrongFormat"));
       return false;
@@ -103,13 +105,27 @@ const UploadPage: React.FC = () => {
     setIsAnalyzing(true);
     setError("");
     setPrediction(null);
+    setRejectionReason(null);
+    setSuggestedMaterial(null);
 
     try {
       const results = await modelRef.current.predict(imageRef.current);
       const bestMatch = results.reduce((prev, current) =>
         prev.probability > current.probability ? prev : current
       );
+
       setPrediction(bestMatch);
+
+      if (bestMatch.probability < 0.7) {
+        setRejectionReason("Low confidence");
+        const sorted = [...results].sort(
+          (a, b) => b.probability - a.probability
+        );
+        const nextBest = sorted[1];
+        if (nextBest) {
+          setSuggestedMaterial(nextBest.className);
+        }
+      }
     } catch (err) {
       console.error("❌ Error during prediction:", err);
       setError("Error during image analysis");
@@ -119,7 +135,8 @@ const UploadPage: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="text-center mb-8">
+      <Guide />
+      <div className="text-center my-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">
           {t("imageUpload.title")}
         </h1>
@@ -178,12 +195,15 @@ const UploadPage: React.FC = () => {
                     setFile(null);
                     setPreview(null);
                     setPrediction(null);
+                    setRejectionReason(null);
+                    setSuggestedMaterial(null);
                   }}
                   className="absolute top-2 right-2 p-1.5 bg-white bg-opacity-90 rounded-full text-gray-700 hover:text-error-500 transition-colors"
                 >
                   <FileX className="h-5 w-5" />
                 </button>
               </div>
+
               <p className="text-sm font-medium text-gray-700">{file?.name}</p>
               <p className="text-xs text-gray-500">
                 {file && typeof file.size === "number"
@@ -206,14 +226,39 @@ const UploadPage: React.FC = () => {
       )}
 
       {prediction && !error && !isAnalyzing && (
-        <div className="text-center">
-          <p className="text-xl font-bold text-gray-700">
-            Result:{" "}
-            <span className="text-blue-600">{prediction.className}</span>
-          </p>
-          <p className="text-sm text-gray-500">
-            Confidence: {(prediction.probability * 100).toFixed(2)}%
-          </p>
+        <div className="text-center space-y-4">
+          {prediction.probability < 0.7 ? (
+            <>
+              <p className="text-red-600 font-semibold">
+                ❌ Design Rejected For DFM (Low confidence)
+              </p>
+              <img
+                src="/public/img.jfif" // حط هنا مسار الصورة اللي عايزها تظهر
+                alt="Uncertain result"
+                className="mx-auto w-48 h-48 object-contain"
+              />
+              <p className="text-sm mt-2">Reason: {rejectionReason}</p>
+              {suggestedMaterial && (
+                <p className="text-sm">
+                  Suggested Material:{" "}
+                  <span className="font-medium text-blue-500">
+                    {suggestedMaterial}
+                  </span>
+                </p>
+              )}
+            </>
+          ) : (
+            <>
+              <p className="text-xl font-bold text-gray-700">
+                Result:{" "}
+                <span className="text-blue-600">{prediction.className}</span>
+              </p>
+              <p className="text-sm text-gray-500">
+                Confidence: {(prediction.probability * 100).toFixed(2)}%
+              </p>
+              <p className="text-green-600 font-semibold">✅ Design Accepted</p>
+            </>
+          )}
         </div>
       )}
     </div>

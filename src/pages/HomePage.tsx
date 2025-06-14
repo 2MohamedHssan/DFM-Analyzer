@@ -26,7 +26,7 @@ const HomePage = () => {
               <p className="text-xl text-[#4B5563] mb-8 animate-fadeIn">
                 {t("home.hero.subtitle")}
               </p>
-              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 space-x-reverse">
+              <div className="flex flex-col gap-5 sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 space-x-reverse">
                 <Link
                   to="/upload"
                   className="btn bg-accent-500 hover:bg-accent-600 text-white px-6 py-3 rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all"
@@ -35,7 +35,7 @@ const HomePage = () => {
                 </Link>
                 <a
                   href="#features"
-                  className="btn bg-white hover:bg-opacity-30 text-[#f59e0b] px-6 py-3 rounded-lg text-lg font-medium transition-all"
+                  className="btn bg-white hover:bg-opacity-90 text-[#f59e0b] px-6 py-3 rounded-lg text-lg font-medium transition-all"
                 >
                   {t("home.hero.features")}
                 </a>

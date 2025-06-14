@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Menu, X, Globe, ChevronDown, User, LogOut } from "lucide-react";
+import { Menu, X, ChevronDown, User, LogOut } from "lucide-react";
 
 import { useAuth } from "../../contexts/AuthContext";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -34,13 +34,9 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <Globe className="h-8 w-8 text-primary-600" />
-              <span className="ms-2 text-xl font-bold text-gray-900">
-                DFM Analyzer
-              </span>
+              <img src="/public/Logo.png" className="w-20 h-20" alt="" />
             </Link>
           </div>
-
           {/* Desktop menu */}
           <div className="hidden md:flex md:items-center md:space-x-4 md:[dir=rtl]:space-x-reverse">
             <Link
@@ -66,9 +62,7 @@ const Navbar = () => {
                 </Link>
               </>
             ) : null}
-
             <LanguageSwitcher />
-
             {isAuthenticated ? (
               <div className="relative ml-3">
                 <button

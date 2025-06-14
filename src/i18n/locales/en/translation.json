@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Vision Analyzer",
+    "name": "DFM Analyzer",
     "tagline": "Advanced Image Analysis at Your Fingertips"
   },
   "nav": {
@@ -22,7 +22,7 @@
     },
     "features": {
       "title": "Powerful Features",
-      "subtitle": "Discover what Vision Analyzer can do for you",
+      "subtitle": "Discover what DFM Analyzercan do for you",
       "feature1": {
         "title": "Object Detection",
         "description": "Identify objects and elements in your images with precision"
@@ -69,7 +69,7 @@
     },
     "register": {
       "title": "Create an Account",
-      "subtitle": "Join Vision Analyzer today",
+      "subtitle": "Join DFM Analyzertoday",
       "name": "Full Name",
       "email": "Email Address",
       "password": "Password",
@@ -194,7 +194,7 @@
     "contact": "Contact",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "copyright": "© 2025 Vision Analyzer. All rights reserved."
+    "copyright": "© 2025 DFM Analyzer. All rights reserved."
   },
   "errors": {
     "required": "This field is required",
@@ -206,5 +206,68 @@
     "emailInUse": "Email is already in use",
     "serverError": "Server error, please try again later",
     "sessionExpired": "Your session has expired, please log in again"
+  },
+ "ai": {
+  "uploadTitle": "Upload an image of a material",
+  "loading": "Loading...",
+  "identify": "Identify the material",
+  "rejectionReason": "I couldn't confidently determine the material type.",
+  "suggestedMaterial": "It might be: {{material}}",
+  "exampleImageNote": "This is a sample image of the material the model suspects."
+},
+  "guide": { 
+    "mainTitle": "Knowledge base rules to follow during design for manufacturing",
+    "first": {
+      "key": "Simplify design",
+      "value": "Reduce the number of parts and components"
+    },
+    "second": {
+      "key": "Use standard components",
+      "value": "Rely on standard components to reduce complexity"
+    },
+    "third": {
+      "key": "Cost and feasibility analysis",
+      "value": "Study material and process costs to choose the most economical options"
+    },
+    "one": {
+      "title": "Reduce the total number of parts",
+      "description": "Reducing the number of parts in a product is likely the best opportunity to lower manufacturing costs as fewer parts mean less purchasing, inventory, handling, processing time, development time, assembly difficulty, service inspection, testing, etc. Generally, it reduces the intensity level of all product-related activities during its lifecycle. Parts that don't need relative motion to other parts, don't need to be made from different materials, or that make assembly/maintenance of other parts extremely difficult are excellent candidates for elimination. Some methods for reducing part count include using single-piece structures and manufacturing processes like injection molding, extrusion, precision casting, and powder metallurgy."
+    },
+    "two": {
+      "title": "Develop a modular design",
+      "description": "Using modules in product design simplifies manufacturing activities like inspection, testing, assembly, purchasing, redesign, maintenance, and service. One reason is that modules add flexibility for product updates during redesign, help conduct pre-final assembly testing, and allow using standard components to reduce product variations. However, connectivity can be a limiting factor when applying this rule."
+    },
+    "three": {
+      "title": "Use of standard components",
+      "description": "Standard components are less expensive than custom-made items. Their high availability reduces product lead times. Their reliability factors are good as they've been verified. Moreover, using standard components indicates supplier production capacity, partially alleviating manufacturer concerns about meeting production schedules."
+    },
+    "four": {
+      "title": "Design parts to be multi-functional",
+      "description": "Multi-functional parts reduce the total number of parts. Some elements may include guiding, aligning, or self-fastening features alongside their primary function to facilitate assembly."
+    },
+    "five": {
+      "title": "Design parts for multi-use",
+      "description": "Different products can share parts designed for multiple uses. These parts may have the same or different functions when used. To implement this, it's necessary to identify suitable parts for multiple uses. For example, all parts used in the company (purchased or manufactured) can be classified until identifying parts commonly used across all products. Then part families are created by identifying similar parts in each group. The goal is to reduce the number of categories, variations within categories, and design characteristics within each type. The result is a set of multi-use parts with standardized manufacturing processes for each part. Especially in new product designs, multi-use standard components should be used."
+    },
+    "six": {
+      "title": "Design for ease of fabrication",
+      "description": "The optimal combination of material and manufacturing process is determined to minimize total fabrication cost. Generally, finishing processes like drawing, polishing, final touch machining, etc., should be avoided. Excessive tolerances, surface finish requirements, etc., typically cause problems leading to unnecessarily high production costs."
+    },
+    "seven": {
+      "title": "Avoid separate fasteners",
+      "description": "Using fasteners increases part manufacturing costs due to required handling and feeding operations. Besides higher equipment costs, these operations aren't 100% successful, thus generally reducing manufacturing efficiency. Fasteners should be avoided and replaced when possible. If fasteners must be used, follow selection guidelines: minimize quantity, size, and variety used; use standard components whenever possible; avoid screws that are too long or too short, separate washers, threaded holes, and round/flat heads (not good enough to cover gaps). Self-tapping screws and chamfered pins are preferred as they achieve fastening success."
+    },
+    "eight": {
+      "title": "Minimize assembly directions",
+      "description": "All parts should be assembled from one direction when possible. The best approach is placing parts from the top, vertically aligned with gravity (downward). This way, gravity assists the assembly process, unlike having to compensate for its effect when choosing other directions."
+    },
+    "nine": {
+      "title": "Maximize compliance (use symmetry in design)",
+      "description": "Errors can occur during assembly due to part dimension variations. Incorporating symmetry in part design and assembly processes is essential. Examples of part symmetry include radius sizes to facilitate assembly."
+    },
+    "ten": {
+      "title": "Reduce part handling through design simplification",
+      "description": "Handling involves positioning, orienting, and securing parts. To facilitate orientation, use symmetric parts when possible. If not possible, exaggerate asymmetry to prevent failure. Use external guiding elements to help maintain part orientation. When designing products, try to reduce waste from materials, parts, etc., during manufacturing. Also consider packaging and choose appropriate, safe product packaging."
+    }
   }
 }

@@ -116,7 +116,13 @@ const UploadPage: React.FC = () => {
 
       setPrediction(bestMatch);
 
-      if (bestMatch.probability < 0.7) {
+      console.log("🔍 Prediction results:", results);
+      console.log("🔍 Best match:", prediction?.className);
+
+      if (
+        bestMatch.probability < 0.7 ||
+        bestMatch.className === "Rejected For DFM"
+      ) {
         setRejectionReason("Low confidence");
         const sorted = [...results].sort(
           (a, b) => b.probability - a.probability
@@ -135,7 +141,6 @@ const UploadPage: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <Guide />
       <div className="text-center my-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">
           {t("imageUpload.title")}
@@ -227,13 +232,14 @@ const UploadPage: React.FC = () => {
 
       {prediction && !error && !isAnalyzing && (
         <div className="text-center space-y-4">
-          {prediction.probability < 0.7 ? (
+          {prediction.probability < 0.7 ||
+          prediction.className == "Rejected For DFM" ? (
             <>
               <p className="text-red-600 font-semibold">
                 ❌ Design Rejected For DFM (Low confidence)
               </p>
               <img
-                src="/public/img.jfif" // حط هنا مسار الصورة اللي عايزها تظهر
+                src="/img.jfif" // حط هنا مسار الصورة اللي عايزها تظهر
                 alt="Uncertain result"
                 className="mx-auto w-48 h-48 object-contain"
               />
@@ -261,6 +267,7 @@ const UploadPage: React.FC = () => {
           )}
         </div>
       )}
+      <Guide />
     </div>
   );
 };

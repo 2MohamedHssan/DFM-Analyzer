@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Globe, Mail, Github, Twitter } from "lucide-react";
+import { Mail, Github, Twitter } from "lucide-react";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -12,8 +12,7 @@ const Footer = () => {
           {/* Logo and tagline */}
           <div className="md:col-span-1">
             <div className="flex items-center">
-              <Globe className="h-8 w-8 text-primary-400" />
-              <span className="ms-2 text-xl font-bold">{t("app.name")}</span>
+              <img src="/Logo.png" className="w-20 h-20" alt="" />
             </div>
             <p className="mt-2 text-sm text-gray-400">{t("app.tagline")}</p>
           </div>

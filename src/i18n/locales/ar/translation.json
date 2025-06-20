@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "DFM Analyzer",
+    "name": "DFM ",
     "tagline": "تحليل الصور المتقدم في متناول يديك"
   },
   "nav": {
@@ -22,7 +22,7 @@
     },
     "features": {
       "title": "ميزات قوية",
-      "subtitle": "اكتشف ما يمكن أن يفعله DFM Analyzer لك",
+      "subtitle": "اكتشف ما يمكن أن يفعله DFM  لك",
       "feature1": {
         "title": "اكتشاف الأشياء",
         "description": "تحديد الأشياء والعناصر في صورك بدقة"
@@ -69,7 +69,7 @@
     },
     "register": {
       "title": "إنشاء حساب",
-      "subtitle": "انضم إلى DFM Analyzer اليوم",
+      "subtitle": "انضم إلى DFM  اليوم",
       "name": "الاسم الكامل",
       "email": "البريد الإلكتروني",
       "password": "كلمة المرور",
@@ -194,7 +194,7 @@
     "contact": "اتصل بنا",
     "privacy": "سياسة الخصوصية",
     "terms": "شروط الخدمة",
-    "copyright": "© 2025 DFM Analyzer. جميع الحقوق محفوظة."
+    "copyright": "© 2025 DFM . جميع الحقوق محفوظة."
   },
   "errors": {
     "required": "هذا الحقل مطلوب",

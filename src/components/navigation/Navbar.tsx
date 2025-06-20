@@ -2,18 +2,15 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Menu, X, ChevronDown, User, LogOut } from "lucide-react";
-
 import { useAuth } from "../../contexts/AuthContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const { t } = useTranslation();
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  // const isRtl = i18n.language === 'ar';
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -22,6 +19,9 @@ const Navbar = () => {
     setIsProfileOpen(!isProfileOpen);
   };
 
+  const logout = () => {
+    localStorage.clear();
+  };
   const handleLogout = () => {
     logout();
     navigate("/");
@@ -54,14 +54,14 @@ const Navbar = () => {
                 >
                   {t("nav.dashboard")}
                 </Link>
-                <Link
-                  to="/upload"
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
-                >
-                  {t("nav.upload")}
-                </Link>
               </>
             ) : null}
+            <Link
+              to="/upload"
+              className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
+            >
+              {t("nav.upload")}
+            </Link>
             <LanguageSwitcher />
             {isAuthenticated ? (
               <div className="relative ml-3">

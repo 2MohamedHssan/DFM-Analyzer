@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "DFM Analyzer",
+    "name": "DFM ",
     "tagline": "Advanced Image Analysis at Your Fingertips"
   },
   "nav": {
@@ -10,7 +10,7 @@
     "history": "Analysis History",
     "profile": "Profile",
     "login": "Log In",
-    "register": "Register",
+    "register": "Sign Up",
     "logout": "Log Out"
   },
   "home": {
@@ -22,7 +22,7 @@
     },
     "features": {
       "title": "Powerful Features",
-      "subtitle": "Discover what DFM Analyzercan do for you",
+      "subtitle": "Discover what DFM can do for you",
       "feature1": {
         "title": "Object Detection",
         "description": "Identify objects and elements in your images with precision"
@@ -65,16 +65,16 @@
       "forgotPassword": "Forgot Password?",
       "loginButton": "Log In",
       "noAccount": "Don't have an account?",
-      "register": "Register"
+      "register": "Sign Up"
     },
     "register": {
       "title": "Create an Account",
-      "subtitle": "Join DFM Analyzertoday",
+      "subtitle": "Join DFM today",
       "name": "Full Name",
       "email": "Email Address",
       "password": "Password",
       "confirmPassword": "Confirm Password",
-      "registerButton": "Register",
+      "registerButton": "Sign Up",
       "hasAccount": "Already have an account?",
       "login": "Log In"
     },
@@ -194,7 +194,7 @@
     "contact": "Contact",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "copyright": "© 2025 DFM Analyzer. All rights reserved."
+    "copyright": "© 2025 DFM . All rights reserved."
   },
   "errors": {
     "required": "This field is required",

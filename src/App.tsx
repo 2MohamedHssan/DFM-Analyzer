@@ -7,10 +7,11 @@ import Layout from "./components/Layout";
 import LoadingSpinner from "./components/ui/LoadingSpinner";
 
 // Pages
+import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/auth/LoginPage";
-import RegisterPage from "./pages/auth/RegisterPage";
-import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
+// import LoginPage from "./pages/auth/LoginPage";
+// import RegisterPage from "./pages/auth/RegisterPage";
+// import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
 import DashboardPage from "./pages/DashboardPage";
 import UploadPage from "./pages/UploadPage";
 import AnalysisResultsPage from "./pages/AnalysisResultsPage";
@@ -19,17 +20,28 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 // Providers
 import { AuthProvider } from "./contexts/AuthContext";
+import SingInPage from "./pages/auth/SingInPage";
+import SingUpPage from "./pages/auth/SingUpPage";
+
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      <SignedIn>{children}</SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+    </>
+  );
+};
 
 function App() {
   const location = useLocation();
   const { i18n } = useTranslation();
 
-  // Update document direction based on language
   useEffect(() => {
     document.documentElement.dir = i18n.language === "ar" ? "rtl" : "ltr";
   }, [i18n.language]);
 
-  // Add page transition effect
   useEffect(() => {
     const main = document.querySelector("main");
     if (main) {
@@ -50,15 +62,17 @@ function App() {
     <Suspense fallback={<LoadingSpinner fullScreen />}>
       <AuthProvider>
         <Routes>
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="forgot-password" element={<ForgotPasswordPage />} />
+          {/* <Route path="login" element={<LoginPage />} /> */}
+          {/* <Route path="register" element={<RegisterPage />} /> */}
+          {/* <Route path="forgot-password" element={<ForgotPasswordPage />} /> */}
+          <Route path="/login" element={<SingInPage />} />
+          <Route path="/register" element={<SingUpPage />} />
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path="dashboard" element={<DashboardPage />} />
-            <Route path="upload" element={<UploadPage />} />
-            <Route path="analysis/:id" element={<AnalysisResultsPage />} />
-            <Route path="profile" element={<ProfilePage />} />
+            <Route path="dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+            <Route path="upload" element={<ProtectedRoute><UploadPage /></ProtectedRoute>} />
+            <Route path="analysis/:id" element={<ProtectedRoute><AnalysisResultsPage /></ProtectedRoute>} />
+            {/* <Route path="profile" element={<ProfilePage />} /> */}
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

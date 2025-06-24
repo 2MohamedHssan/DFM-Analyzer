@@ -164,7 +164,7 @@ const HomePage = () => {
             {t("home.hero.subtitle")}
           </p>
           <Link
-            to="/register"
+            to="/upload"
             className="btn bg-accent-500 hover:bg-accent-600 text-white px-8 py-3 rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all inline-block"
           >
             {t("home.hero.cta")}

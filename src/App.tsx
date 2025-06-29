@@ -1,27 +1,24 @@
-import { Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-// Components
-import Layout from "./components/Layout";
-import LoadingSpinner from "./components/ui/LoadingSpinner";
-
-// Pages
+const Layout = lazy(() => (import("./components/Layout")));
+const LoadingSpinner = lazy(() => import("./components/ui/LoadingSpinner"));
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
-import HomePage from "./pages/HomePage";
+const HomePage = lazy(() => import("./pages/HomePage"));
 // import LoginPage from "./pages/auth/LoginPage";
 // import RegisterPage from "./pages/auth/RegisterPage";
 // import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
-import DashboardPage from "./pages/DashboardPage";
-import UploadPage from "./pages/UploadPage";
-import AnalysisResultsPage from "./pages/AnalysisResultsPage";
 // import ProfilePage from "./pages/ProfilePage";
-import NotFoundPage from "./pages/NotFoundPage";
-
-// Providers
+const DashboardPage = lazy(() => import("./pages/DashboardPage"));
+const UploadPage = lazy(() => import("./pages/UploadPage"));
+const AnalysisResultsPage = lazy(() => import("./pages/AnalysisResultsPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"))
 import { AuthProvider } from "./contexts/AuthContext";
-import SingInPage from "./pages/auth/SingInPage";
-import SingUpPage from "./pages/auth/SingUpPage";
+const SingInPage = lazy(() => import("./pages/auth/SingInPage"))
+const SingUpPage = lazy(() => import("./pages/auth/SingUpPage"))
+
+
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return (

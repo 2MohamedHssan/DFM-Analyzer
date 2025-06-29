@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { BarChart, PieChart, Image as ImageIcon, Clock, ChevronRight } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
-
+import { useUser } from "@clerk/clerk-react";
 // Mock data
 const mockAnalyses = [
   {
@@ -32,7 +31,7 @@ const mockAnalyses = [
 
 const DashboardPage = () => {
   const { t } = useTranslation();
-  const { user } = useAuth();
+  const { user } = useUser();
   const [analyses, setAnalyses] = useState(mockAnalyses);
   const [stats, setStats] = useState({
     imagesAnalyzed: 0,
@@ -59,11 +58,12 @@ const DashboardPage = () => {
     return <LoadingSpinner fullScreen />;
   }
 
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
         <h1 className="text-3xl font-bold text-gray-900">
-          {t('dashboard.welcome', { name: user?.name })}
+          {t('dashboard.welcome', { name: user?.firstName || 'User' })}
         </h1>
         <Link to="/upload" className="btn btn-primary mt-4 md:mt-0">
           {t('nav.upload')}
@@ -189,7 +189,7 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Analysis Trend</h3>
           <div className="flex justify-center">

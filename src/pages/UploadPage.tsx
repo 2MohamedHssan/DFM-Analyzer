@@ -150,9 +150,8 @@ const UploadPage: React.FC = () => {
 
       <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
         <div
-          className={`border-2 border-dashed rounded-lg p-12 text-center ${
-            dragActive ? "border-primary-500 bg-primary-50" : "border-gray-300"
-          } transition-colors duration-200`}
+          className={`border-2 border-dashed rounded-lg p-12 text-center ${dragActive ? "border-primary-500 bg-primary-50" : "border-gray-300"
+            } transition-colors duration-200`}
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
           onDragOver={handleDrag}
@@ -233,7 +232,7 @@ const UploadPage: React.FC = () => {
       {prediction && !error && !isAnalyzing && (
         <div className="text-center space-y-4">
           {prediction.probability < 0.7 ||
-          prediction.className == "Rejected For DFM" ? (
+            prediction.className == "Rejected For DFM" ? (
             <>
               <p className="text-red-600 font-semibold">
                 ❌ Design Rejected For DFM (Low confidence)

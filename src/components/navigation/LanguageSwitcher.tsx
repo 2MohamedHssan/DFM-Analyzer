@@ -10,23 +10,21 @@ const LanguageSwitcher = ({ compact = false }: LanguageSwitcherProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const currentLanguage = i18n.language;
-  
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  
+
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     setIsOpen(false);
-    
-    // Store the language preference
     localStorage.setItem('i18nextLng', lang);
   };
-  
+
   return (
     <div className="relative">
-      <button 
+      <button
         className={`flex items-center ${compact ? 'p-2' : 'px-3 py-2'} rounded-md text-sm font-medium text-gray-700 hover:text-primary-600 focus:outline-none`}
         onClick={toggleDropdown}
         aria-expanded={isOpen}
@@ -36,9 +34,9 @@ const LanguageSwitcher = ({ compact = false }: LanguageSwitcherProps) => {
           <span className="me-1">{t('common.language')}</span>
         )}
       </button>
-      
+
       {isOpen && (
-        <div className="origin-top-right absolute right-0 [dir=rtl]:left-0 [dir=rtl]:right-auto mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+        <div className="origin-top-right absolute rtl:left-0 ltr:right-0  mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
           <div className="py-1" role="menu" aria-orientation="vertical">
             <button
               className={`flex items-center w-full text-left px-4 py-2 text-sm ${currentLanguage === 'en' ? 'text-primary-600 bg-primary-50' : 'text-gray-700 hover:bg-gray-100'}`}

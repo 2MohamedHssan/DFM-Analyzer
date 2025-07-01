@@ -4,7 +4,7 @@ import { Upload, Image as ImageIcon, FileX } from "lucide-react";
 import * as tmImage from "@teachablemachine/image";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 import Guide from "../components/ui/Guide";
-
+import { Typewriter } from 'react-simple-typewriter';
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const ALLOWED_FORMATS = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 const MODEL_URL = "/tm-model/";
@@ -19,7 +19,6 @@ const UploadPage: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const modelRef = useRef<tmImage.CustomMobileNet | null>(null);
-
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [dragActive, setDragActive] = useState(false);
@@ -139,6 +138,10 @@ const UploadPage: React.FC = () => {
     setIsAnalyzing(false);
   };
 
+
+  console.log("prediction", prediction);
+
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center my-8">
@@ -228,11 +231,10 @@ const UploadPage: React.FC = () => {
           {error}
         </div>
       )}
-
       {prediction && !error && !isAnalyzing && (
         <div className="text-center space-y-4">
           {prediction.probability < 0.7 ||
-            prediction.className == "Rejected For DFM" ? (
+            prediction.className == "Rejected For DFM" || prediction.className != undefined ? (
             <>
               <p className="text-red-600 font-semibold">
                 ❌ Design Rejected For DFM (Low confidence)
@@ -243,6 +245,15 @@ const UploadPage: React.FC = () => {
                 className="mx-auto w-48 h-48 object-contain"
               />
               <p className="text-sm mt-2">Reason: {rejectionReason}</p>
+              <p>
+                <Typewriter
+                  words={['القاعدة المعرفية التي يلزم اتباعها أثناء التصميم للتصنيع']}
+                  cursor={true}
+                  cursorStyle=" "
+                  typeSpeed={80}
+                  delaySpeed={1000}
+                />
+              </p>
               {suggestedMaterial && (
                 <p className="text-sm">
                   Suggested Material:{" "}
